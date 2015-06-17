@@ -8,6 +8,7 @@ import junit.framework.Assert;
 import org.junit.Test;
 
 import com.aavn.sample.services.impl.PaymentService;
+import com.aavn.sample.services.interfaces.IBonusPointAccumulable;
 import com.aavn.sample.services.interfaces.IPaymentService;
 
 public class CustomerTest {
@@ -31,6 +32,14 @@ public class CustomerTest {
 		
 		for(Customer customer : customers) {
 			paymentService.makePaymentFor(customer, TOTAL_AMOUNT);
+			if (hasBonusPointAccumulable(customer)) {
+				IBonusPointAccumulable bonusPointCustomer = (IBonusPointAccumulable) customer;
+				bonusPointCustomer.increasePoint();
+			}
 		}
+	}
+	
+	private boolean hasBonusPointAccumulable(Customer customer) {
+		return customer instanceof IBonusPointAccumulable;
 	}
 }
