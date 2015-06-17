@@ -6,7 +6,7 @@ import junit.framework.Assert;
 
 public class CustomerTest {
 	@Test
-	public void BeautySaloonPaymentTest() {
+	public void BeautySalonPaymentTest() {
 		Customer customer = new Customer();
 		customer.setCustomerType(Customer.PREMIUM);
 		Assert.assertEquals(20d, customer.getDiscountForService(100d));
