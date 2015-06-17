@@ -7,7 +7,12 @@ import junit.framework.Assert;
 
 import org.junit.Test;
 
+import com.aavn.sample.services.impl.PaymentService;
+import com.aavn.sample.services.interfaces.IPaymentService;
+
 public class CustomerTest {
+	private static final double TOTAL_AMOUNT = 100d;
+	private IPaymentService paymentService = new PaymentService();
 	@Test
 	public void BeautySalonPaymentTest() {
 		Customer firstPremiumCustomer = new Customer();
@@ -25,7 +30,7 @@ public class CustomerTest {
 		customers.add(silverCustomer);
 		
 		for(Customer customer : customers) {
-			
+			paymentService.makePaymentFor(customer, TOTAL_AMOUNT);
 		}
 	}
 }
