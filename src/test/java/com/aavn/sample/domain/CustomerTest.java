@@ -33,8 +33,8 @@ public class CustomerTest {
 		for(Customer customer : customers) {
 			paymentService.makePaymentFor(customer, TOTAL_AMOUNT);
 			if (hasBonusPointAccumulable(customer)) {
-				IBonusPointAccumulable bonusPointCustomer = (IBonusPointAccumulable) customer;
-				bonusPointCustomer.increasePoint();
+				IBonusPointAccumulable bonusPointAccumulableCustomer = (IBonusPointAccumulable) customer;
+				bonusPointAccumulableCustomer.increasePoint();
 			}
 		}
 	}
